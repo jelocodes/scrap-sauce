@@ -1,2 +1,21 @@
-<h1>Hi <%= @user.username %>!</h1>
+<% if logged_in? && @user.id == session[:user_id] %>
+	<h1>Hi <%= @user.username %>!</h1>
+
+	<div class="recipes">
+		<section class="ingredient-list">
+			<h2>Showing recipes including leftover <span id="ingredients">...</span></h2>
+			<p class="hint" style="display:none;">(Double-click ingredient fields to edit them.)</p>
+			<p class="manualAdd">
+				<a href="#" onclick="event.preventDefault();"><i class="fa fa-plus-circle"></i> Add whatever you have lying around: </a>
+				<input type="text" name="addField" id="addField" placeholder="Add ingredient">
+			</p>
+		</section> <!-- leftovers-list -->
+
+		<section class="generated-recipes"> <!-- dynamically generated Yummly recipes -->
+			<ul></ul>
+		</section>
+	</div>
+<% else %>
+	<h1><%= @user.username %>'s saved recipes:</h1>
+<% end %>
 

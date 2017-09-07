@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20170907190514) do
     t.string "images"
     t.integer "total_time"
     t.text "recipe"
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|

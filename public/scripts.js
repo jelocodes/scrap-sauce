@@ -48,9 +48,35 @@ scrapSauce.addRecipe = function(id){
              console.log(recipe);
              // Update ".chosenMeals" to display the fetched recipe
              scrapSauce.addFavourite(recipe);
+             // Persists the favourited recipe to database
+             scrapSauce.save(recipe);
         }
     });
 };
+
+scrapSauce.save = function(recipe) {
+        var ingredients = recipe.ingredientLines
+        var dataToSave = {
+            name: recipe.name,
+            images: recipe.images[0],
+            recipe: ingredients,
+            total_time: recipe.totalTime,
+            }
+        // testing with alert
+        alert(JSON.stringify(dataToSave))
+        $.ajax({
+            url: '/recipes/new',
+            dataType: 'json',
+            type: 'POST',
+            data: {recipe: JSON.stringify(dataToSave)},
+            success: function(data) {
+                alert("Successful");
+            },
+            failure: function() {
+                alert("Unsuccessful");
+            }
+        });
+}
 
 scrapSauce.manuallyAdd = function(inputField){
 
@@ -170,3 +196,4 @@ scrapSauce.getRecipes = function(ingredient){
         }
     });
 };
+

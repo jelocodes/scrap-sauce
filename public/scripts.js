@@ -10,8 +10,8 @@ scrapSauce.recipes = [];
 
 // Yummly API info
 
-scrapSauce.apikey = "f235b2cf2658a138b83a42670e7c1374";
-scrapSauce.appId = "441e00da";
+scrapSauce.apikey = "f9822733e81476b2df68dc44e070beec";
+scrapSauce.appId = "bb15248b";
 
 // jQuery selectors
 
@@ -99,14 +99,7 @@ scrapSauce.manuallyAdd = function(inputField){
 
                     $('.editable .delete').on('click', function(){
 
-                        // if the ingredient was added from the NoFrills flyer, unhighlight it
-                        var editableSpan = $(this).parent();
-                        var highlightedSpan = $('#' + editableSpan.text().replace(/\s/, ''));
-                        if (highlightedSpan.length) {
-                            highlightedSpan.removeClass("selected");
-                        }
-
-                        // remove the ingredient from mealPlan.ingredients
+                        // remove the ingredient from scrapSauce.ingredients
                         scrapSauce.removeFromIngredients(editableSpan);
 
                         scrapSauce.updateh2();
@@ -133,7 +126,7 @@ scrapSauce.manuallyAdd = function(inputField){
 
 scrapSauce.updateh2 = function(){
 
-    // if mealPlan.ingredients is empty, make h2 display "..." again; otherwise, update h2 with the new list of ingredients.
+    // if scrapSauce.ingredients is empty, make h2 display "..." again; otherwise, update h2 with the new list of ingredients.
     if ($.isEmptyObject(scrapSauce.ingredients)) {
         scrapSauce.ingredientsSpan.html("...");
         scrapSauce.generatedRecipesList.html("");
@@ -148,7 +141,7 @@ scrapSauce.updateh2 = function(){
 
         var innerText = $(this).text();
 
-        // temporarily remove the double-clicked ingredient from mealPlan.ingredients
+        // temporarily remove the double-clicked ingredient from scrapSauce.ingredients
         scrapSauce.removeFromIngredients($(this));
 
         // Turn inner text html into an input field CONTAINING the inner text
@@ -162,7 +155,7 @@ scrapSauce.updateh2 = function(){
 
     $('.editable .delete').on('click', function(){
 
-        // remove the ingredient from mealPlan.ingredients
+        // remove the ingredient from scrapSauce.ingredients
         scrapSauce.removeFromIngredients(editableSpan);
 
         scrapSauce.updateh2();
@@ -305,3 +298,25 @@ $(function(){
     });
 
 });
+
+scrapSauce.addFavourite = function(recipe){
+    console.log(recipe);
+    var title = $('<h3>').text(recipe.name);
+
+    if (recipe.images.length) {
+        var image = $('<img>').attr('src', recipe.images[0].hostedLargeUrl);
+    } else {
+        var image = $('<img>');
+    }
+
+    var recipeId = (parseInt($("input[name='recipe_id']").last().attr("value")) + 1).toString();  
+
+    var slug = title.text().replace(/ /g,'-').replace(/<h3>/g,'').replace(/<\/h3>/g,'').toLowerCase();
+
+    var more = $('<p><a href="/recipes/' + slug + '">See more</a></p>');
+
+    var del = $('<form action="/recipes/delete" method="POST">').html('<input id="hidden" type="hidden" name="_method" value="delete"><input type="hidden" name="recipe_id" value="'+ recipeId +'"><input type="submit" value="Delete">');
+
+    scrapSauce.chosenMeals.append($('<li class="meal">').append(title, image, more, del));
+
+};

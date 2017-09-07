@@ -62,8 +62,6 @@ scrapSauce.save = function(recipe) {
             recipe: ingredients,
             total_time: recipe.totalTime,
             }
-        // testing with alert
-        alert(JSON.stringify(dataToSave))
         $.ajax({
             url: '/recipes/new',
             dataType: 'json',

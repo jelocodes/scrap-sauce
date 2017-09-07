@@ -5,3 +5,7 @@
 	<p><label for="password">Password: </label><input type="password" type="password" name="password"></p>
 	<p><input type="submit" value="Log In"></p>
 </form>
+
+<% if flash.has?(:message) %>
+    <%= flash[:message] %>
+<% end %>

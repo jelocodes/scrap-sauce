@@ -19,3 +19,26 @@
 	<h1><%= @user.username %>'s saved recipes:</h1>
 <% end %>
 
+<!-- user's saved meals -->
+
+<section class="chosenMeals">
+	<% if logged_in? && session[:user_id] %>
+		<h2>Your saved recipes:</h2>
+	<% end %>
+
+	<ul>
+		<%if @user.recipes.size !=0 %>
+			<% @user.recipes.each do |recipe| %>
+				<li class="meal">
+					<h3><%= recipe.name %></h3>
+					<img src="<%= recipe.images %>" alt="<%= recipe.name %>">
+					<p><a href="/recipes/<%= recipe.slug %>">See more</a></p>
+					<button>Delete</button>
+				</li>
+			<% end %>
+		<% else %>
+			<p class="noRecipes">No recipes to show.</p>
+		<% end %>
+	</ul>
+</section>
+

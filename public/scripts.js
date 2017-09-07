@@ -195,3 +195,113 @@ scrapSauce.getRecipes = function(ingredient){
     });
 };
 
+scrapSauce.displayRecipes = function(recipes){
+    // clear the current 'recipes' div
+    scrapSauce.generatedRecipesList.html("");
+
+    // update the recipes div
+    $.each(recipes, function(i, recipe){
+        console.log(recipe);
+        var title = $('<h3>').text(recipe.recipeName);
+        var source = $('<p>').text("From " + recipe.sourceDisplayName).attr('class', 'from');
+        if (recipe.smallImageUrls){
+            var image = $('<img>').attr('src', recipe.smallImageUrls[0]);
+        } else {
+            var image = $('<img>');
+        }
+        // var ingredients = $('<ul>').html("<li>" + recipe.ingredients.join("</li><li>") + "</li>");
+        var ingredients = $('<p>').text("Ingredients: " + recipe.ingredients.join(", ")).attr('class', 'ings');
+        //var add = $('<a>').html('<i class="fa fa-plus"></i> Add Recipe to Meal Plan').attr({
+        var more = $('<a>').html('<i class="fa fa-plus"></i> See More').attr({
+            href: '#',
+            class: 'seeMore',
+            id: recipe.id,
+            onclick: 'event.preventDefault();'
+        });
+        var fav = $('<a>').html('<i class="fa fa-star-o"></i> Favourite').attr({
+            href: '#',
+            class: 'fav',
+            onclick: "event.preventDefault(); scrapSauce.addRecipe('" + recipe.id + "');"
+        });
+        var noThanks = $('<a href="#" onclick="event.preventDefault();" class="noThanks">').append($('<i class="fa fa-times">'));
+
+        scrapSauce.generatedRecipesList.append($('<li class="recipe">').append(title, source, image, ingredients, more, fav, noThanks));
+    });
+
+    $('.seeMore').on('click', function(){
+        $.ajax({
+            url: 'https://api.yummly.com/v1/api/recipe/' + $(this).attr('id'),
+            type: 'GET',
+            data: {
+                format: 'jsonp',
+                _app_key: scrapSauce.apikey,
+                _app_id: scrapSauce.appId
+            },
+            dataType: 'jsonp',
+            success: function(recipe){
+                 console.log(recipe);
+                 // eventually make this slide down:
+                 scrapSauce.displayDetails(recipe);
+            }
+        });
+    });
+
+    $('.fav').on('click', function(){
+        $(this).html('<i class="fa fa-star"></i> Favourited').addClass('favourited');
+        $('.noRecipes').remove();
+
+        $('.favourited').on('click', function(){
+            $(this).html('<i class="fa fa-star-o"></i> Favourite').removeClass('favourited');
+        });
+    });
+
+    $('.noThanks').on('click', function(){
+        $(this).parent().slideUp();
+        $(this).remove();
+    });
+};
+
+scrapSauce.displayDetails = function(recipe){
+
+    var seeMoreLink = $('#' + recipe.id);
+    seeMoreLink.siblings('.from').html("<a href='" +
+        recipe.source.sourceRecipeUrl +
+        "'>Original Recipe</a> from <a href='" + 
+        recipe.source.sourceSiteUrl + 
+        "'>" + 
+        recipe.source.sourceDisplayName +
+        "</a>");
+
+    var recipeImage = seeMoreLink.siblings('img');
+
+    if (recipe.images.length) {
+        recipeImage.attr('src', recipe.images[0].hostedLargeUrl);
+    }
+
+    if (recipe.yield) {
+        recipeImage.after($('<p>').html(recipe.yield),
+        $('<p>').html("Total time: " + recipe.totalTime));
+    } else {
+        recipeImage.after($('<p>').html("Total time: " + recipe.totalTime));
+    }
+
+    var ingredients = $('<ul>').html("<li>" + recipe.ingredientLines.join("</li><li>") + "</li>");
+    seeMoreLink.siblings('.ings').replaceWith(ingredients);
+
+    seeMoreLink.replaceWith($('<p>').html(recipe.attribution.html));
+
+};
+
+$(function(){
+
+    $('.noThanks').on('click', function(){
+        $(this).parent().slideUp();
+        $(this).remove();
+    });
+
+    scrapSauce.manualAddButton.on('click', function(){
+        scrapSauce.manualAddField.slideDown();
+        scrapSauce.manuallyAdd(scrapSauce.manualAddField);
+    });
+
+});

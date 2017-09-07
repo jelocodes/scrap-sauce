@@ -1,4 +1,5 @@
 class RecipeController < ApplicationController
+
 	post '/recipes/new' do 
 		hash = eval params["recipe"]
 		recipe = hash[:recipe].collect do |ingredient|

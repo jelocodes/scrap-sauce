@@ -13,4 +13,12 @@ class RecipeController < ApplicationController
 		redirect '/'
 	end
 
+	get '/recipes/:slug' do
+		if logged_in?
+			@user = User.find(session[:user_id])
+		end
+		@recipe = Recipe.find_by_slug(params[:slug])
+		erb :'recipes/show'
+	end
+
 end

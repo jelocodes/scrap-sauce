@@ -1,0 +1,13 @@
+<h1><%= @recipe.name %></h1>
+
+<img src="<%= @recipe.images %>" alt="<%= @recipe.name %>">
+<p>Total time: <%= @recipe.total_time %> minutes</p>
+<%= @recipe.recipe.gsub(',','') %>
+
+<% if logged_in? && @recipe.user_id == session[:user_id] %>
+	<form action="/recipes/delete" method="POST">
+		<input type="hidden" id="hidden" name="_method" value="delete">
+		<input type="hidden" name="recipe_id" value="<%=@recipe.id%>">
+		<input type="submit" value="Delete">
+	</form>
+<% end %>

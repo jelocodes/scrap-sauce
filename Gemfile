@@ -13,6 +13,7 @@ gem 'pry'
 gem 'bcrypt'
 gem "tux"
 gem "rack-flash3"
+gem "json"
 
 group :test do
   gem 'rspec'

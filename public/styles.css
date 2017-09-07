@@ -390,10 +390,6 @@ section {
   font-weight: bold;
 }
 
-.chosenMeals {
-  display: none;
-}
-
 ul {
   list-style-type: none;
   padding: 0;

@@ -1,0 +1,479 @@
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,600|Open+Sans:300,700);
+body {
+  width: 100%;
+  *zoom: 1;
+}
+body:before, body:after {
+  content: "";
+  display: table;
+}
+body:after {
+  clear: both;
+}
+
+/*! normalize.css v3.0.1 | MIT License | git.io/normalize */
+html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
+  display: block;
+}
+
+audio, canvas, progress, video {
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+[hidden], template {
+  display: none;
+}
+
+a {
+  background: 0 0;
+}
+
+a:active, a:hover {
+  outline: 0;
+}
+
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+b, strong {
+  font-weight: 700;
+}
+
+dfn {
+  font-style: italic;
+}
+
+h1 {
+  font-size: 2em;
+  margin: .67em 0;
+}
+
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+small {
+  font-size: 80%;
+}
+
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -.5em;
+}
+
+sub {
+  bottom: -.25em;
+}
+
+img {
+  border: 0;
+}
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+figure {
+  margin: 1em 40px;
+}
+
+hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+pre {
+  overflow: auto;
+}
+
+code, kbd, pre, samp {
+  font-family: monospace,monospace;
+  font-size: 1em;
+}
+
+button, input, optgroup, select, textarea {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+button {
+  overflow: visible;
+}
+
+button, select {
+  text-transform: none;
+}
+
+button, html input[type=button], input[type=reset], input[type=submit] {
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+
+button[disabled], html input[disabled] {
+  cursor: default;
+}
+
+button::-moz-focus-inner, input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+input {
+  line-height: normal;
+}
+
+input[type=checkbox], input[type=radio] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+input[type=search] {
+  -webkit-appearance: textfield;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+input[type=search]::-webkit-search-cancel-button, input[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+fieldset {
+  border: 1px solid silver;
+  margin: 0 2px;
+  padding: .35em .625em .75em;
+}
+
+legend {
+  border: 0;
+  padding: 0;
+}
+
+textarea {
+  overflow: auto;
+}
+
+optgroup {
+  font-weight: 700;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td, th {
+  padding: 0;
+}
+
+/* Border-Box */
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* Clearfix */
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
+* html .clearfix {
+  zoom: 1;
+}
+
+/* IE6 */
+*:first-child + html .clearfix {
+  zoom: 1;
+}
+
+/* IE7 */
+body {
+  width: 100%;
+  *zoom: 1;
+}
+
+body:before, body:after {
+  content: "";
+  display: table;
+}
+
+body:after {
+  clear: both;
+}
+
+/* Drew Minns' Style Guide (drewminns.com/sandbox/styleguide.zip) */
+body {
+  color: #333;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: "Open Sans", sans-serif;
+}
+
+p {
+  line-height: 25.6px;
+  margin: 22.4px 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+small {
+  font-size: 12.8px;
+}
+
+strong {
+  font-weight: 600;
+}
+
+a {
+  color: #81B89D;
+}
+a:hover {
+  color: #15251d;
+}
+
+header nav {
+  width: 100%;
+  padding: 5px 10px;
+  background: #3A3736;
+  color: #efefef;
+}
+
+form .form-element {
+  margin: 15px 0;
+}
+form .form-element label {
+  display: block;
+  margin-bottom: 6.4px;
+  font-weight: 600;
+}
+form .form-element input {
+  width: 100%;
+  padding: 10px;
+}
+form .form-element .radio {
+  width: 100%;
+}
+form .form-element .radio label {
+  display: inline-block;
+}
+form .form-element .radio label input[type="radio"] {
+  width: auto;
+}
+
+button.button-default {
+  padding: 10px 25px;
+  background: #81B89D;
+  border: 0;
+  color: #fff;
+}
+button.button-default:hover {
+  background: #60a684;
+}
+
+button.button-success {
+  padding: 10px 25px;
+  background: #759DA7;
+  border: 0;
+  color: #fff;
+}
+button.button-success:hover {
+  background: #5b848e;
+}
+
+button.button-error {
+  padding: 10px 25px;
+  background: #EB4B4D;
+  border: 0;
+  color: #fff;
+}
+button.button-error:hover {
+  background: #e61d20;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* Deb's Styles */
+header {
+  text-align: center;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+.wrapper {
+  background: #eaeaea;
+  padding: 2%;
+}
+
+h2 {
+  margin-top: 0;
+  font-size: 23px;
+}
+
+section {
+  padding: 2%;
+  background: white;
+}
+
+.recipes {
+  display: inline;
+  float: left;
+  width: 64.58333%;
+  margin: 0 1.04167%;
+}
+.recipes .ingredient-list {
+  margin-bottom: 1em;
+}
+.recipes .ingredient-list .manualAdd {
+  margin: 0;
+}
+.recipes .ingredient-list .hint {
+  margin: 0 0 10px 0;
+}
+.recipes .generated-recipes {
+  min-height: 500px;
+}
+.recipes .generated-recipes .seeMore {
+  display: inline-block;
+  margin-right: 10px;
+}
+.recipes .generated-recipes .favourited {
+  font-weight: bold;
+}
+
+.chosenMeals {
+  display: none;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.noThanks {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+}
+
+.recipes h2 span {
+  display: inline-block;
+}
+.recipes h2 .editable {
+  border: 1px solid #c2ddd0;
+  border-radius: 5px;
+  padding: 0 5px;
+  background: #c2ddd0;
+  position: relative;
+  cursor: pointer;
+}
+.recipes h2 .editable .delete {
+  position: absolute;
+  top: -3px;
+  right: 0;
+  font-size: 11px;
+  color: #3a6650;
+}
+.recipes h2 .editable .delete:hover {
+  color: #030404;
+}
+.recipes p #addField {
+  display: none;
+}
+.recipes .generated-recipes ul {
+  margin: 0;
+}
+.recipes .generated-recipes ul article {
+  width: 70%;
+  margin: 60px auto;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 30px;
+  text-align: center;
+  color: #bab6b5;
+}
+.recipes .generated-recipes ul article i {
+  display: inline-block;
+  margin-right: 12px;
+}
+.recipes .generated-recipes .recipe {
+  position: relative;
+  padding: 0 15px 15px 15px;
+  margin-bottom: 10px;
+  background: #fcfcfc;
+  border: 1px solid lightGrey;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  transition: background 1s;
+}
+.recipes .generated-recipes .recipe:hover {
+  background: white;
+}
+.recipes .generated-recipes .recipe h3 {
+  margin: 10px 0 10px 0;
+  font-size: 25px;
+}
+.recipes .generated-recipes .recipe p {
+  margin: 10px 0 10px 0;
+}
+
+.chosenRecipes {
+    display: inline;
+    float: left;
+    width: 48.58333%;
+    margin: 0 1.04167%;
+}
+
+/*# sourceMappingURL=styles.css.map */

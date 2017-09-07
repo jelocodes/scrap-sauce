@@ -28,12 +28,18 @@
 
 	<ul>
 		<%if @user.recipes.size !=0 %>
-			<% @user.recipes.each do |recipe| %>
+			<% @user.recipes.each_with_index do |recipe, index| %>
 				<li class="meal">
 					<h3><%= recipe.name %></h3>
 					<img src="<%= recipe.images %>" alt="<%= recipe.name %>">
 					<p><a href="/recipes/<%= recipe.slug %>">See more</a></p>
-					<button>Delete</button>
+					<% if logged_in? && @user.id == session[:user_id] %>
+						<form action="/recipes/delete" method="POST">
+							<input id="hidden" type="hidden" name="_method" value ="delete">
+							<input id="<%=index%>" type="hidden" name="recipe_id" value="<%=recipe.id%>">
+							<input type="submit" value="Delete">
+						</form>
+					<% end %>
 				</li>
 			<% end %>
 		<% else %>

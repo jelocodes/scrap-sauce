@@ -9,9 +9,15 @@ class ApplicationController < Sinatra::Base
 		set :session_secret, "password_security"
 	end
 
-  get "/" do
-    erb :home
-  end
+    get "/" do
+      if logged_in?
+        @user = User.find(session[:user_id])
+        @tweets = @user.recipes.all
+        erb :'users/show'
+      else
+        erb :home
+      end
+    end
 
   helpers do 
     def logged_in?

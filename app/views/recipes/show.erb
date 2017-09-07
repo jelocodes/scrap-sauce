@@ -1,5 +1,15 @@
 <h1><%= @recipe.name %></h1>
 
+<% if @recipe.user_id == session[:user_id] %>
+
+	Back to <a href="/users/@user.username">your</a> recipes!
+
+<% else %>
+
+	<p>Back to <a href="/users/<%= User.find(@recipe.user_id).username %>"><%= User.find(@recipe.user_id).username %></a>'s recipes!</p>
+
+<% end %>
+
 <img src="<%= @recipe.images %>" alt="<%= @recipe.name %>">
 <p>Total time: <%= @recipe.total_time %> minutes</p>
 <%= @recipe.recipe.gsub(',','') %>

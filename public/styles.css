@@ -63,6 +63,8 @@ dfn {
 h1 {
   font-size: 2em;
   margin: .67em 0;
+  color: #e70b28;
+  font-family: 'Chewy', cursive;
 }
 
 mark {
@@ -245,7 +247,7 @@ body {
   font-weight: 300;
 }
 
-h1, h2, h3, h4, h5 {
+h2, h3, h4, h5 {
   font-family: "Open Sans", sans-serif;
 }
 
@@ -356,7 +358,7 @@ h1 {
 }
 
 .wrapper {
-  padding: 5% 30% 5% 30%;
+  padding: 2% 30% 2% 30%;
 }
 
 h2 {
@@ -414,10 +416,10 @@ a {
   display: inline-block;
 }
 .recipes h2 .editable {
-  border: 1px solid #c2ddd0;
+  border: 1px solid #db8c95;
   border-radius: 5px;
   padding: 0 5px;
-  background: #c2ddd0;
+  background: #db8c95;
   position: relative;
   cursor: pointer;
 }
@@ -426,7 +428,7 @@ a {
   top: -3px;
   right: 0;
   font-size: 11px;
-  color: #3a6650;
+  color: #e70b28;
 }
 .recipes h2 .editable .delete:hover {
   color: #030404;

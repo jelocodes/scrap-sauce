@@ -22,7 +22,7 @@
 <!-- user's saved meals -->
 
 <section class="chosenMeals">
-	<% if logged_in? && session[:user_id] %>
+	<% if logged_in? && @user.id == session[:user_id] %>
 		<h2>Your saved recipes:</h2>
 	<% end %>
 

@@ -267,7 +267,7 @@ strong {
 }
 
 a {
-  color: #81B89D;
+  color: #e70b28;
 }
 a:hover {
   color: #15251d;
@@ -278,6 +278,12 @@ header nav {
   padding: 5px 10px;
   background: #3A3736;
   color: #efefef;
+}
+
+nav {
+  margin:20px auto;
+  overflow: hidden;
+  width: 150px;
 }
 
 form .form-element {
@@ -350,8 +356,7 @@ h1 {
 }
 
 .wrapper {
-  background: #eaeaea;
-  padding: 2%;
+  padding: 5% 30% 5% 30%;
 }
 
 h2 {

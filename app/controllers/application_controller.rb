@@ -13,6 +13,7 @@ class ApplicationController < Sinatra::Base
     get "/" do
       if logged_in?
         @user = User.find(session[:user_id])
+        @path = request.path_info
         @tweets = @user.recipes.all
         erb :'users/show'
       else

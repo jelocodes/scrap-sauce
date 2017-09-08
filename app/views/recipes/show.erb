@@ -2,7 +2,7 @@
 
 <% if @recipe.user_id == session[:user_id] %>
 
-	Back to <a href="/users/@user.username">your</a> recipes!
+	<p>Back to <a href="/users/<%=@user.username%>">your</a> recipes!</p>
 
 <% else %>
 
@@ -13,6 +13,8 @@
 <img src="<%= @recipe.images %>" alt="<%= @recipe.name %>">
 <p>Total time: <%= @recipe.total_time %> minutes</p>
 <%= @recipe.recipe.gsub(',','') %>
+
+<br>
 
 <% if logged_in? && @recipe.user_id == session[:user_id] %>
 	<form action="/recipes/delete" method="POST">

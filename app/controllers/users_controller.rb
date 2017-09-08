@@ -31,6 +31,7 @@ class UsersController < ApplicationController
 
 	get '/users/:username' do
 		@user = User.find_by(username: params[:username])
+		@path = request.path_info
 		@recipe = @user.recipes 
 		erb :'users/show'
 	end

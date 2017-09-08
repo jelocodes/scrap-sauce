@@ -11,7 +11,15 @@
 	<script src="modernizr.custom.66464.js"></script>
 <body>
 
+	<% if !!@path && @user.id == session[:user_id] %>  <!-- different layouts for different pages -->
+
+	<div class="wrapper2 clearfix">
+
+	<% else %>
+
 	<div class="wrapper clearfix">
+
+	<% end %>
 
 	<%if logged_in? %> 
 		<nav><a href="/users/<%=User.find(session[:user_id]).username%>">Home</a> <a href="/logout">| Log Out</a></nav>

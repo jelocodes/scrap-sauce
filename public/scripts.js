@@ -99,6 +99,12 @@ scrapSauce.manuallyAdd = function(inputField){
 
                     $('.editable .delete').on('click', function(){
 
+                        var editableSpan = $(this).parent();
+                        var highlightedSpan = $('#' + editableSpan.text().replace(/\s/, ''));
+                        if (highlightedSpan.length) {
+                            highlightedSpan.removeClass("selected");
+                        }
+
                         // remove the ingredient from scrapSauce.ingredients
                         scrapSauce.removeFromIngredients(editableSpan);
 
